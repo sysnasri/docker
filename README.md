@@ -9,7 +9,7 @@ Role Variables
 --------------
 Default/main.yaml , you can add default containers that needs to be pulled from docker hub
 
-  images_name: 
+    images_name: 
       - nasri/snapp:v1
 
 If you are located in restricated area you can use proxy 
@@ -42,10 +42,7 @@ in some situation docker needs to be loged in. we could use ansible vault for cr
       username: ""
       password: ""                          
 
-Dependencies
-------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------

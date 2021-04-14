@@ -47,7 +47,6 @@ in some situation docker needs to be loged in. we could use ansible vault for cr
 Example Playbook
 ----------------
 
-## Example Playbook
 
     - hosts: Docker_Hosts
       vars_files:

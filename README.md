@@ -1,17 +1,34 @@
-Role Name
+# Ansible Role: Docker Installation
 =========
 
-A brief description of the role goes here.
+An Ansible Role that installs Docker on Ubuntu 
 
-Requirements
-------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Default/main.yaml , you can add default containers that needs to be pulled from docker hub
+  images_name: 
+      - nasri/snapp:v1
+If you are located in restricated area you can use proxy 
+    proxy: 
+       username: ""
+       password: ""
+       server: ""
+       port: ""     
+Pipe modules can be named here for deployment purpose  these are usefull when deploy application with docker compose and ansible 
+    pip_modules:
+        - pip
+        - docker
+        - docker-compose
+you have option to chose shecan.ir name server for docker or just use http proxy which is more secure and faster. 
+    nameserver:
+      ns1: 8.8.8.8
+      ns2: 4.2.2.4 
+in some situation docker needs to be loged in. we could use ansible vault for credentials. 
+    docker:
+      username: ""
+      password: ""                          
 
 Dependencies
 ------------
@@ -21,18 +38,16 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
+    - hosts: Docker_Hosts
+      vars_files:
+        - vars/main.yml
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: sysnasri.docker }
 
 License
 -------
 
-BSD
+GPL
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).

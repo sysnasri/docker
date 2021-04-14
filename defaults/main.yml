@@ -6,8 +6,8 @@ images_name:
 proxy: 
     username: ""
     password: ""
-    server: "136.243.227.161"
-    port: "1373"
+    server: ""
+    port: ""
 # Pipe modules can be named here to install for deployment purpose  
 pip_modules:
         - pip

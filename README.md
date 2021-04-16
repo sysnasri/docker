@@ -7,7 +7,7 @@ An Ansible Role that installs Docker on Ubuntu
 
 Role Variables
 --------------
-Default/main.yaml , you can add default containers that needs to be pulled from docker hub
+vars/main.yaml , you can add default containers that needs to be pulled from docker hub
 
     images_name: 
       - nasri/snapp:v1

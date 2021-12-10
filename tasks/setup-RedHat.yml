@@ -12,23 +12,25 @@
     update_cache: true
     name: "{{item}}"
     state: present
-  loop: "{{docker_packages.ubuntu}}"
-  when: ansible_distribution == "Ubuntu"
+  loop: "{{docker_packages.centos}}"
+  when: ansible_distribution == "RedHat"
 
-- name: Add Docker GPG apt Key
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
-- name: Set http proxy for APT
+- name: Set http proxy for
   template:
     src: apt-proxy.j2
     dest: /etc/apt/apt.conf.d/proxy.conf
   when: proxy.server is defined and proxy.server != '' and proxy.server != None
 
 - name: Adding Docker Repository
-  apt_repository:
-    repo: deb https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+  yum_repository:
+    name: Docker
+    description: Docker CE Stable
+    baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
     state: present
+
 - name: Updating apt and installing docker-ce
   package:
     update_cache: true

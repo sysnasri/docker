@@ -1,0 +1,10 @@
+---
+#packages which are neccessary for docker are listed here
+docker_packages:
+  redhat:
+    - curl
+    - gnupg-agent
+    - python3-pip
+    - python3-setuptools
+    - net-tools
+    - iproute2
